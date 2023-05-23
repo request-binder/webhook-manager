@@ -8,7 +8,7 @@ app.use(express.json());
 
 
 app.get('/', (request: Request, response: Response, next: NextFunction) => {
-  response.send('Hello');
+  response.send('Hello world');
 });
 
 
