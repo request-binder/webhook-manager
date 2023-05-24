@@ -8,6 +8,10 @@ interface Client {
 }
 let clients: Client[] = [];
 
+binsRouter.get('/', (_req, res) => {
+  res.json(['foo', 'this-endpoint']);
+});
+
 binsRouter.get('/:endpoint_id', (req: Request, res: Response) => {
   getBinRequests(req.params.endpoint_id).then((webhookRequests) => res.json(webhookRequests));
 });
