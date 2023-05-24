@@ -12,6 +12,6 @@ connect(mongoDBUri)
     console.error('error connecting to MongoDB:', error.message);
   });
 
-export const getBinRequests = async (endpoint: String) => {
-  return requestModel.find({ endpoint: endpoint });
+export const getBinRequests = (endpoint: String) => {
+  return requestModel.find({ endpoint: endpoint }).sort({ createdAt: 'desc'}).exec();
 };

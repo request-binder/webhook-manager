@@ -3,8 +3,8 @@ import { getBinRequests } from '../mongoAPI';
 
 const binsRouter = express.Router();
 
-binsRouter.get('/:endpoint_id', (req: Request, res: Response) => {
-  getBinRequests(req.params.endpoint_id).then((webhookRequests) => res.json(webhookRequests));
+binsRouter.get('/:endpoint_id', async (req: Request, res: Response) => {
+  res.json(await getBinRequests(req.params.endpoint_id));
 });
 
 export default binsRouter;

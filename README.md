@@ -10,6 +10,7 @@
 MONGODB_URI=mongodb://username:password@localhost:27017/webhook-manager?authSource=admin
 ```
 
+3. npm run setupdb
 4. npm run dev
 
 # frontend

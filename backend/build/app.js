@@ -29,7 +29,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv = __importStar(require("dotenv")); // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 dotenv.config();
 const express_1 = __importDefault(require("express"));
-// import mongoAPI from './mongoAPI';
 const app = (0, express_1.default)();
 const PORT = process.env.PORT;
 const listener_1 = __importDefault(require("./controllers/listener"));

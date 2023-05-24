@@ -1,0 +1,1 @@
+db.listeners.createIndex({endpoint: 1, createdAt: -1});
