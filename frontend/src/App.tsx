@@ -1,11 +1,11 @@
-import { useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
-import {Request} from "./types.ts"
+import { Request } from "./types.ts"
 import RequestView from "./components/request.tsx"
 import requestService from './services/requests'
 
 function App() {
-  const bin = location.pathname.split('/')[1]; 
+  const bin = location.pathname.split('/')[1];
   const [requests, setRequests] = useState<Request[]>([]);
 
   useEffect(() => {
@@ -17,10 +17,10 @@ function App() {
 
   return (
     <>
-    <h1>Bin {bin}</h1>
-    <div>
-      {requests.map((request) => <RequestView request={request}/>)}
-    </div>
+      <h1>Bin {bin}</h1>
+      <div>
+        {requests.map((request) => <RequestView request={request} key={request._id} />)}
+      </div>
     </>
   )
 }
