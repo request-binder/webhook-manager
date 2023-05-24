@@ -4,6 +4,7 @@ const listenerRouter = express.Router();
 
 import { ListenerRequest, } from '../models';
 import requestModel from '../models';
+import { sendEventToClients } from './bins';
 
 // debug route
 listenerRouter.get('/', (_req, res) => {
@@ -21,8 +22,11 @@ listenerRouter.post('/:endpoint', (req, res) => {
     body,
   };
 
+
   const request = new requestModel(result);
   request.save();
+
+  sendEventToClients(request.toJSON(), result.endpoint)
 
   // console.log(result);
   res.send(request.toJSON());
