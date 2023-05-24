@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {Request} from '../types'
-const baseUrl = '/bins/'
+const baseUrl = "/bins/"
 
 const getAll = (bin: string): Promise<Request[]> => {
   const request = axios.get(baseUrl + bin);

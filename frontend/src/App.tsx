@@ -4,18 +4,14 @@ import {Request} from "./types.ts"
 import RequestView from "./components/request.tsx"
 import requestService from './services/requests'
 
-import {sampleRequests} from "./sample.tsx"
-
-
 function App() {
   const bin = location.pathname.split('/')[1]; 
   const [requests, setRequests] = useState<Request[]>([]);
 
   useEffect(() => {
     requestService.getAll(bin).then(initialRequests => {
+      console.log(initialRequests)
       setRequests(initialRequests)
-    }).catch(() => {
-      setRequests(sampleRequests.sample)
     })
   }, [bin]);
 
