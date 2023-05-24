@@ -13,7 +13,7 @@ listenerRouter.get('/', (_req, res) => {
   });
 });
 
-listenerRouter.post('/:endpoint', (req, res) => {
+listenerRouter.post('/:endpoint', async (req, res) => {
   const body = req.body as object;
 
   const result: ListenerRequest = {
@@ -22,13 +22,12 @@ listenerRouter.post('/:endpoint', (req, res) => {
     body,
   };
 
-
   const request = new requestModel(result);
-  request.save();
+
+  await request.save();
 
   sendEventToClients(request.toJSON(), result.endpoint)
 
-  // console.log(result);
   res.send(request.toJSON());
 });
 

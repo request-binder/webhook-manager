@@ -3,7 +3,7 @@ import { getBinRequests } from '../mongoAPI';
 
 const binsRouter = express.Router();
 interface Client {
-  client: Response, 
+  connection: Response,
   endpoint: string
 }
 let clients: Client[] = [];
@@ -18,13 +18,13 @@ binsRouter.get('/events/:endpoint_id', (req, res) => {
   res.setHeader('Connection', 'keep-alive');
 
   // Add the response object to the clients array
-  clients.push({endpoint: req.params.endpoint_id, client: res});
+  clients.push({ endpoint: req.params.endpoint_id, connection: res });
 
   // Handle client disconnection
   req.on('close', () => {
     // Remove the response object from the clients array
-    clients = clients.filter(({client}) => client !== res);
-  });
+    clients = clients.filter(({ connection }) => connection !== res)
+  })
 });
 
 export function sendEventToClients(eventData, endpoint) {
@@ -32,7 +32,7 @@ export function sendEventToClients(eventData, endpoint) {
 
   clients.forEach(client => {
     if (client.endpoint === endpoint) {
-      client.client.write(formattedEventData);
+      client.connection.write(formattedEventData);
     }
   });
 }
