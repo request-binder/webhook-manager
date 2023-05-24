@@ -4,6 +4,7 @@ const listenerRouter = express.Router();
 
 import { ListenerRequest, } from '../models';
 import requestModel from '../models';
+import { sendEventToClients } from './bins';
 
 // debug route
 listenerRouter.get('/', (_req, res) => {
@@ -12,7 +13,7 @@ listenerRouter.get('/', (_req, res) => {
   });
 });
 
-listenerRouter.post('/:endpoint', (req, res) => {
+listenerRouter.post('/:endpoint', async (req, res) => {
   const body = req.body as object;
 
   const result: ListenerRequest = {
@@ -22,9 +23,11 @@ listenerRouter.post('/:endpoint', (req, res) => {
   };
 
   const request = new requestModel(result);
-  request.save();
 
-  // console.log(result);
+  await request.save();
+
+  sendEventToClients(request.toJSON(), result.endpoint)
+
   res.send(request.toJSON());
 });
 
