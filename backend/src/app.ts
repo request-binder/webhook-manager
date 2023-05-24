@@ -2,6 +2,7 @@ import * as dotenv from 'dotenv'; // see https://github.com/motdotla/dotenv#how-
 dotenv.config();
 
 import express, { Application, Request, Response, NextFunction } from 'express';
+import morgan from 'morgan';
 
 const app: Application = express();
 const PORT = process.env.PORT;
@@ -12,9 +13,11 @@ import binsRouter from "./controllers/bins";
 app.use(express.static('build')); // deployment
 app.use(express.json());
 
+app.use(morgan('dev'));
+
 app.use('/listener', listenerRouter);
 
-app.use('/bins', binsRouter);
+app.use('/binders', binsRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

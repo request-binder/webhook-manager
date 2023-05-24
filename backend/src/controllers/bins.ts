@@ -2,11 +2,18 @@ import express, { Request, Response } from 'express';
 import { getBinRequests } from '../mongoAPI';
 
 const binsRouter = express.Router();
+
 interface Client {
   connection: Response,
   endpoint: string
 }
+
 let clients: Client[] = [];
+
+//debug route
+binsRouter.get('/', (_req, res) => {
+  res.json(['foo', 'this-endpoint']);
+});
 
 binsRouter.get('/:endpoint_id', async (req: Request, res: Response) => {
   res.json(await getBinRequests(req.params.endpoint_id));
