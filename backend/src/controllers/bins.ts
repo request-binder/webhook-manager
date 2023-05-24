@@ -34,7 +34,7 @@ binsRouter.get('/events/:endpoint_id', (req, res) => {
   })
 });
 
-export function sendEventToClients(eventData, endpoint) {
+export function sendEventToClients(eventData: object, endpoint: string) {
   const formattedEventData = `data: ${JSON.stringify(eventData)}\n\n`;
 
   clients.forEach(client => {

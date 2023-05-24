@@ -16,7 +16,7 @@ const Binder = () => {
   }, [binderId]);
 
   useEffect(() => {
-    const source = new EventSource('/bins/events/' + binderId);
+    const source = new EventSource('/binders/events/' + binderId);
 
     source.onmessage = (event) => {
       const data = JSON.parse(event.data)
