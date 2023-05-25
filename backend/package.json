@@ -34,6 +34,7 @@
     "morgan": "^1.10.0",
     "path": "^0.12.7",
     "postgres": "^3.3.4",
-    "rotating-file-stream": "^3.1.0"
+    "rotating-file-stream": "^3.1.0",
+    "securerandom": "^0.0.2"
   }
 }
