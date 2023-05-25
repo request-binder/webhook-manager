@@ -12,7 +12,6 @@ interface Client {
 
 let clients: Client[] = [];
 
-//debug route
 binsRouter.get('/', async (_req, res) => {
   res.json(await getAllEndpoints());
 });
