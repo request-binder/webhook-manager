@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import { getBinRequests } from '../mongoAPI';
-import { createEndpoint } from '../postgresAPI';
+import { createEndpoint, getAllEndpoints } from '../postgresAPI';
 let SecureRandom = require('securerandom');
 
 const binsRouter = express.Router();
@@ -13,8 +13,8 @@ interface Client {
 let clients: Client[] = [];
 
 //debug route
-binsRouter.get('/', (_req, res) => {
-  res.json(['foo', 'this-endpoint']);
+binsRouter.get('/', async (_req, res) => {
+  res.json(await getAllEndpoints());
 });
 
 binsRouter.post('/new', async (req, res) => {
