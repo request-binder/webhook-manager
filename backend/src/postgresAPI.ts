@@ -16,3 +16,10 @@ export const endpointExists = async (endpoint: string) => {
 
   return record.length >= 1;
 };
+
+export const createEndpoint = async (endpoint: string) => {
+  return await sql`
+    INSERT INTO endpoint (endpoint)
+    VALUES (${ endpoint })
+  `;
+};
