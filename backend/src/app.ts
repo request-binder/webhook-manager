@@ -10,7 +10,7 @@ const PORT = process.env.PORT;
 import listenerRouter from "./controllers/listener";
 import binsRouter from "./controllers/bins";
 
-app.use(express.static('build'));
+app.use(express.static('../frontend/dist'));
 app.use(express.json());
 
 app.use(morgan('dev'));
