@@ -1,13 +1,12 @@
 import { Request } from "../types"
 import JSONPretty from 'react-json-pretty';
-import JSONPrettyMon from 'react-json-pretty/dist/adventure_time';
+// import JSONPrettyMon from 'react-json-pretty/dist/adventure_time';
 
 interface Props {
   request: Request;
 }
 const RequestView: React.FC<Props> = ({ request }) => {
   return (
-    // <JSONPretty id="json-pretty" data={request}></JSONPretty>
     <table>
       <tbody>
         <tr>
@@ -20,7 +19,7 @@ const RequestView: React.FC<Props> = ({ request }) => {
             <JSONPretty
               id="json-pretty-headers"
               data={request.headers}
-              theme={JSONPrettyMon}
+            // theme={JSONPrettyMon}
             />
           </td>
         </tr>
@@ -30,7 +29,7 @@ const RequestView: React.FC<Props> = ({ request }) => {
             <JSONPretty
               id="json-pretty-body"
               data={request.body}
-              theme={JSONPrettyMon}
+            // theme={JSONPrettyMon}
             />
           </td>
         </tr>
