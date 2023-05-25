@@ -9,6 +9,9 @@ const PORT = process.env.PORT;
 
 import listenerRouter from "./controllers/listener";
 import binsRouter from "./controllers/bins";
+import { getAllEndpoints } from "./postgresAPI"
+
+getAllEndpoints();
 
 app.use(express.static('build')); // deployment
 app.use(express.json());
