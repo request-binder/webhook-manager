@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import Binder from './components/Binder';
 import BinderList from './components/BinderList';
+import NewBinder from './components/NewBinder';
 
 function App() {
   const router = createBrowserRouter([{
@@ -13,6 +14,7 @@ function App() {
     element: (
       <div>
         <h1>Home</h1>
+        <NewBinder />
         <BinderList />
       </div>
     ),
