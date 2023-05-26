@@ -1,4 +1,4 @@
-const duration = 1000
+const duration = 500
 const onEnter =  (node:HTMLElement) => {
         node.style.marginTop = `-${node.offsetHeight}px`;
         node.style.marginBottom = `0px`;
