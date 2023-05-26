@@ -54,3 +54,28 @@ th {
   text-align: left;
   padding: 8px;
 }
+
+.Group-item,
+.Group-item.ui,
+.Group-item.ui:first-child {
+  display: block;
+  margin-top: 1em;
+}
+
+.Group-item-enter.Group-item-enter-active {
+  transition: opacity 500ms ease-in, margin 500ms ease-out;
+}
+
+.Group-item-exit.Group-item-exit-active {
+  transition: opacity 500ms ease-out, margin 500ms ease-in;
+}
+
+.Group-item-enter,
+.Group-item-exit.Group-item-exit-active {
+  opacity: 0;
+}
+
+.Group-item-enter.Group-item-enter-active,
+.Group-item-exit {
+  opacity: 1;
+}
