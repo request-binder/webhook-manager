@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 const Binder = () => {
   const [requests, setRequests] = useState<Request[]>([]);
   const { binderId } = useParams();
+  const domain = window.location.host;
 
   useEffect(() => {
     requestService.getAll(binderId).then((initialRequests: Request[]) => {
@@ -30,7 +31,7 @@ const Binder = () => {
 
   return (
     <>
-      <h1>Binder URL: {binderId}</h1>
+      <h1>Binder URL: https://{domain}/listener/{binderId}</h1>
       <div>
         {requests.map((request) => <RequestView
           key={request._id}
