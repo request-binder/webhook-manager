@@ -1,27 +1,27 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const listenerRouter = express_1.default.Router();
-const models_1 = __importDefault(require("../models"));
-// debug route
-listenerRouter.get('/', (_req, res) => {
-    models_1.default.find({}).then((requests) => {
-        res.json(requests);
-    });
-});
-listenerRouter.post('/:endpoint', (req, res) => {
-    const body = req.body;
-    const result = {
-        headers: req.headers,
-        endpoint: req.params.endpoint,
-        body,
-    };
-    const request = new models_1.default(result);
-    request.save();
-    // console.log(result);
-    res.send(request.toJSON());
-});
+const bins_1 = require("./bins");
+const mongoAPI_1 = require("../mongoAPI");
+const postgresAPI_1 = require("../postgresAPI");
+listenerRouter.post('/:endpoint', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    if (yield (0, postgresAPI_1.endpointExists)(req.params.endpoint)) {
+        const requestJSON = yield (0, mongoAPI_1.saveRequest)(req);
+        (0, bins_1.sendEventToClients)(requestJSON, requestJSON.endpoint);
+    }
+    res.send();
+}));
 exports.default = listenerRouter;
