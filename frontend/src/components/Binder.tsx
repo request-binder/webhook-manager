@@ -3,8 +3,10 @@ import requestService from '../services/requests.ts';
 import { Request } from "../types.ts";
 import RequestView from "./request.tsx";
 import { useParams } from 'react-router-dom';
-
+import {TransitionGroup, CSSTransition} from "react-transition-group"
+import {duration, onEnter, onEntering, onExit, onExiting} from "./animations.ts"
 const Binder = () => {
+   
   const [requests, setRequests] = useState<Request[]>([]);
   const { binderId } = useParams();
 
@@ -20,7 +22,7 @@ const Binder = () => {
 
     source.onmessage = (event) => {
       const data = JSON.parse(event.data)
-      setRequests([data, ...requests])
+      setRequests((prev) => [data, ...prev])
     }
 
     return () => {
@@ -31,12 +33,17 @@ const Binder = () => {
   return (
     <>
       <h1>Binder URL: {binderId}</h1>
-      <div>
-        {requests.map((request) => <RequestView
-          key={request._id}
-          request={request}
-        />)}
-      </div>
+      <TransitionGroup>
+        {requests.map((request) => (
+          <CSSTransition key={request._id} onEnter={onEnter} classNames="Group-item" onEntering={onEntering} onExit={onExit} onExiting={onExiting} timeout={duration}>
+              <RequestView
+                key={request._id}
+                request={request}
+              />
+          </CSSTransition>
+        )
+        )}
+      </TransitionGroup>
     </>
   )
 }
