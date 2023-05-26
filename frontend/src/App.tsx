@@ -7,6 +7,17 @@ import {
 import Binder from './components/Binder';
 import BinderList from './components/BinderList';
 import NewBinder from './components/NewBinder';
+// import { Header } from './components/Header';
+
+import myimage from '../dist/logo.png';
+
+// const Header = () => {
+//   return (
+//     <header>
+//        <img alt='my_image' src={ myimage }></img>
+//     </header>
+//   );
+// };
 
 function App() {
   const router = createBrowserRouter([{
@@ -26,7 +37,12 @@ function App() {
   }
   ])
   return (
-    <RouterProvider router={router} />
+    <>
+        <header>
+          <img alt='my_image' style={{ width: '200px', height: 'auto' }} src={ myimage }></img>
+        </header>
+        <RouterProvider router={router} />
+    </>
   )
 }
 
