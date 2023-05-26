@@ -1,11 +1,12 @@
 import { Request } from "../types"
-import JSONPretty from 'react-json-pretty';
-import JSONPrettyMon from 'react-json-pretty/dist/adventure_time';
-
+import { JSONTree } from 'react-json-tree'
+import JSONTheme from "./jsonTheme"
 interface Props {
   request: Request;
 }
+
 const RequestView: React.FC<Props> = ({ request }) => {
+
   return (
     <table>
       <tbody>
@@ -16,20 +17,22 @@ const RequestView: React.FC<Props> = ({ request }) => {
         <tr>
           <th>Headers</th>
           <td>
-            <JSONPretty
-              id="json-pretty-headers"
+            <JSONTree
               data={request.headers}
-              theme={JSONPrettyMon}
+              shouldExpandNodeInitially={() => false}
+              collectionLimit={10}
+              theme={JSONTheme}
             />
           </td>
         </tr>
         <tr>
           <th>Body</th>
           <td>
-            <JSONPretty
-              id="json-pretty-body"
-              data={request.body}
-              theme={JSONPrettyMon}
+            <JSONTree
+              data={request.body || {}}
+              shouldExpandNodeInitially={() => false}
+              collectionLimit={10}
+              theme={JSONTheme}
             />
           </td>
         </tr>
