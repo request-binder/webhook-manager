@@ -9,6 +9,7 @@ const Binder = () => {
    
   const [requests, setRequests] = useState<Request[]>([]);
   const { binderId } = useParams();
+  const domain = window.location.host;
 
   useEffect(() => {
     requestService.getAll(binderId).then((initialRequests: Request[]) => {
@@ -32,7 +33,7 @@ const Binder = () => {
 
   return (
     <>
-      <h1>Binder URL: {binderId}</h1>
+      <h1>Binder URL: https://{domain}/listener/{binderId}</h1>
       <TransitionGroup>
         {requests.map((request) => (
           <CSSTransition key={request._id} onEnter={onEnter} classNames="Group-item" onEntering={onEntering} onExit={onExit} onExiting={onExiting} timeout={duration}>
