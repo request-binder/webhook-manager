@@ -9,7 +9,7 @@ import BinderList from './components/BinderList';
 import NewBinder from './components/NewBinder';
 // import { Header } from './components/Header';
 
-import myimage from '../dist/assets/logo-0a7e200d.png';
+import myimage from './assets/HatchfulExport-All/logo.png';
 
 // const Header = () => {
 //   return (

@@ -16,7 +16,7 @@ import { useNavigate, useParams, Link} from "react-router-dom";
 import RequestView from "./RequestView.tsx"
 
 
-import myimage from '../../dist/assets/logo-0a7e200d.png';
+import myimage from '../assets/HatchfulExport-All/logo.png';
 
 const drawerWidth = 330;
 interface Props {
