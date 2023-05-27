@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import requestService from '../services/requests.ts';
 import { Request } from "../types.ts";
 import { useParams } from 'react-router-dom';
-import RequestList from "./RequestList.tsx"
+import RequestList from "./RequestList.tsx";
 
 const Binder = () => {
   const [requests, setRequests] = useState<Request[]>([]);

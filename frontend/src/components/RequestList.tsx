@@ -15,8 +15,8 @@ import { Request } from "../types.ts";
 import { useNavigate, useParams, Link} from "react-router-dom";
 import RequestView from "./RequestView.tsx"
 
-
 import myimage from '../assets/HatchfulExport-All/logo.png';
+import { generateTestEvents } from '../services/testEvents';
 
 const drawerWidth = 330;
 interface Props {
@@ -43,6 +43,7 @@ const RequestList: React.FC<Props> = ({url, requests}) => {
           <Typography variant="h6" noWrap component="div">
             Webhook URL - {url}
           </Typography>
+          <button onClick={generateTestEvents.bind(this, binderId)} style={{ width: 200, marginLeft: 'auto' }}>Generate Test Events</button>
         </Toolbar>
       </AppBar>
       <Drawer
