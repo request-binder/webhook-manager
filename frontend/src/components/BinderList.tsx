@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import binderService from "../services/binderService";
+import { Link } from "react-router-dom";
 
 const Binders = () => {
   const [binderIds, setBinderIds] = useState<string[]>([]);
@@ -14,7 +15,7 @@ const Binders = () => {
       <ul>
         {binderIds.map((binder: string) =>
           <li key={binder}>
-            <a href={`/${binder}`}>{binder}</a>
+            <Link to={`/${binder}`}>{binder}</Link>
           </li>
         )}
       </ul>
