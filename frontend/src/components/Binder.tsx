@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import RequestList from "./RequestList.tsx"
 
 const Binder = () => {
-   
   const [requests, setRequests] = useState<Request[]>([]);
   const { binderId } = useParams();
   const domain = window.location.host;
@@ -15,7 +14,6 @@ const Binder = () => {
     requestService.getAll(binderId).then((initialRequests: Request[]) => {
       setRequests(initialRequests);
     });
-
   }, [binderId]);
 
   useEffect(() => {
@@ -32,9 +30,7 @@ const Binder = () => {
   }, [binderId, requests])
 
   return (
-    <>
-      < RequestList url={url} requests={requests} /> 
-    </>
+    <RequestList url={url} requests={requests} />
   )
 }
 

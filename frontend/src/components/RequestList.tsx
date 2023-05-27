@@ -41,7 +41,7 @@ const RequestList: React.FC<Props> = ({url, requests}) => {
       >
         <Toolbar style={{background: "#00adb5"}}>
           <Typography variant="h6" noWrap component="div">
-            Binder URL: {url}
+            Webhook URL - {url}
           </Typography>
         </Toolbar>
       </AppBar>
