@@ -1,1 +1,0 @@
-declare module 'react-json-pretty/dist/adventure_time';

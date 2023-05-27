@@ -9,7 +9,7 @@ import BinderList from './components/BinderList';
 import NewBinder from './components/NewBinder';
 // import { Header } from './components/Header';
 
-import myimage from '../dist/logo.png';
+import myimage from '../dist/assets/logo-0a7e200d.png';
 
 // const Header = () => {
 //   return (
@@ -23,24 +23,24 @@ function App() {
   const router = createBrowserRouter([{
     path: "/",
     element: (
-      <div>
+        <>
+        <header>
+          <img alt='my_image' style={{ width: '200px', height: 'auto' }} src={ myimage }></img>
+        </header>
         <h1>Home</h1>
         <NewBinder />
         <BinderList />
-      </div>
+      </>
     ),
   }, {
-    path: "/:binderId",
+    path: "/:binderId/:requestId?",
     element: (
       <Binder />
     )
   }
   ])
   return (
-    <>
-        <header>
-          <img alt='my_image' style={{ width: '200px', height: 'auto' }} src={ myimage }></img>
-        </header>
+    <> 
         <RouterProvider router={router} />
     </>
   )
