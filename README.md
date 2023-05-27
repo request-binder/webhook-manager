@@ -1,6 +1,6 @@
 # About
 
-Request Binder is an developer tool which provides a simple UI for inspecting webhooks. With one click, users can generate a URL which they can use to subscribe to a webhook producer. Webhooks are streamed in real-time and the request headers and payload can be displayed.
+Request Binder is a developer tool which provides a simple UI for inspecting webhooks. With one click, users can generate a URL which they can use to subscribe to a webhook producer. Webhooks are streamed in real-time and the request headers and payload can be displayed.
 
 Visit the live app at [requestbinder.com](https://requestbinder.com/)
 
