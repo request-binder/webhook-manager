@@ -7,42 +7,28 @@ import {
 import Binder from './components/Binder';
 import BinderList from './components/BinderList';
 import NewBinder from './components/NewBinder';
-// import { Header } from './components/Header';
 
-import myimage from '../dist/logo.png';
-
-// const Header = () => {
-//   return (
-//     <header>
-//        <img alt='my_image' src={ myimage }></img>
-//     </header>
-//   );
-// };
+import myimage from './assets/HatchfulExport-All/logo_transparent.png';
 
 function App() {
   const router = createBrowserRouter([{
     path: "/",
     element: (
-      <div>
-        <h1>Home</h1>
+        <>
+        <img alt='my_image' style={{ width: '400px', height: 'auto' }} src={ myimage }></img>
         <NewBinder />
         <BinderList />
-      </div>
+      </>
     ),
   }, {
-    path: "/:binderId",
+    path: "/:binderId/:requestId?",
     element: (
       <Binder />
     )
   }
   ])
   return (
-    <>
-        <header>
-          <img alt='my_image' style={{ width: '200px', height: 'auto' }} src={ myimage }></img>
-        </header>
-        <RouterProvider router={router} />
-    </>
+    <RouterProvider router={router} />
   )
 }
 
